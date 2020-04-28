@@ -1,0 +1,59 @@
+{
+  "requestType": "trip",
+  "options": {
+    "earthRadius": "3958.8",
+    "optimization": "none"
+  },
+  "places": [
+    {
+      "name": "Denver",
+      "latitude": "39.739",
+      "longitude": "-105.0"
+    },
+    {
+      "name": "Fort Collins",
+      "latitude": "40.58",
+      "longitude": "-105.084"
+    },
+    {
+      "name": "Dillon",
+      "latitude": "39.63",
+      "longitude": "-106.04"
+    },
+    {
+      "name": "Colorado Springs",
+      "latitude": "38.83",
+      "longitude": "-104.82"
+    },
+    {
+      "name": "Limon",
+      "latitude": "39.26",
+      "longitude": "-103.69"
+    },
+    {
+      "name": "Boulder",
+      "latitude": "40.02",
+      "longitude": "-105.27"
+    },
+    {
+      "name": "Telluride",
+      "latitude": "37.94",
+      "longitude": "-107.81"
+    },
+    {
+      "name": "Steamboat Springs",
+      "latitude": "40.49",
+      "longitude": "-106.83"
+    },
+    {
+        "name": "Grand Junction",
+        "latitude": "39.06",
+        "longitude": "-108.55"
+    },
+    {
+      "name": "Pueblo",
+      "latitude": "38.254",
+      "longitude": "-104.609"
+    }
+  ]
+}
