@@ -43,7 +43,7 @@ export default function TripPlannerCard() {
                 </Tooltip>
                 <Tooltip title="View source code" aria-label="view source code">
                     <IconButton  
-                        onClick={() => window.open('https://github.com/jackv545', '_blank')}
+                        onClick={() => window.open('https://github.com/jackv545/TripPlanner', '_blank')}
                     >
                         <GitHub/>
                     </IconButton>
