@@ -35,16 +35,19 @@ export function createTripRequest() {
 export function setTripState(response) {
     this.setState({
         places: response.body.places,
-        distances: response.body.distances
+        distances: response.body.distances,
+        loadingTrip: false
     })
 }
 
 export function sendServerRequest(type, request, setStateFunction) {
-    sendServerRequestWithBody(type, request).then((response => {
-        if (response.statusCode >= 200 && response.statusCode <= 299) {
-            setStateFunction(response);
-        } else {
-            console.error("Response code: ", response.statusCode, response.statusText);
-        }
-    }));
+    this.setState({loadingTrip: true}, () => {
+        sendServerRequestWithBody(type, request).then((response => {
+            if (response.statusCode >= 200 && response.statusCode <= 299) {
+                setStateFunction(response);
+            } else {
+                console.error("Response code: ", response.statusCode, response.statusText);
+            }
+        }));
+    });
 }

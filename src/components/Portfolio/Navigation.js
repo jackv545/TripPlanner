@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { AppBar, Toolbar, Typography, Grid, IconButton, Tooltip } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Grid, IconButton, Tooltip, Link } from '@material-ui/core';
 import { LinkedIn } from '@material-ui/icons';
 
 export default class Navigation extends Component {
-    github() {
-        window.open('https://github.com/jackv545', '_blank');
-    }
-
     render() {
         return(
             <AppBar position="static" color="inherit">
@@ -21,11 +17,9 @@ export default class Navigation extends Component {
                         </Grid>
                         <Grid item>
                             <Tooltip title="LinkedIn" aria-label="linkedin">
-                                <IconButton  
-                                    onClick={() => window.open('https://www.linkedin.com/in/jack-visser/', '_blank')}
-                                >
-                                    <LinkedIn/>
-                                </IconButton>
+                                <Link href='https://www.linkedin.com/in/jack-visser/' target="_blank" rel="noopener">
+                                        <IconButton><LinkedIn/></IconButton>
+                                </Link>
                             </Tooltip>
                         </Grid>
                     </Grid>

@@ -87,7 +87,8 @@ function createTableData(places, distances) {
 }
 
 function commasInNumber(num) {
-    if (num === undefined){
+    console.log('Number', num, 'Type', typeof(num));
+    if (num === undefined || isNaN(num)){
         return "";
     }
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
@@ -116,33 +117,27 @@ export default class Itinerary extends Component {
                 editable={{
                     onRowAdd: (newData) =>
                         new Promise((resolve) => {
-                            setTimeout(() => {
-                                if(!coordinatesAreValid(convertCoordinates(newData, false))) {
-                                    this.props.toggleError();
-                                } else {
-                                    this.props.addPlace(newData);
-                                }
-                                resolve();
-                            }, 600);
+                            if(!coordinatesAreValid(convertCoordinates(newData, false))) {
+                                this.props.toggleError();
+                            } else {
+                                this.props.addPlace(newData);
+                            }
+                            resolve();
                         }),
                     onRowUpdate: (newData, oldData) =>
                         new Promise((resolve) => {
-                            setTimeout(() => {
-                                if(!coordinatesAreValid(convertCoordinates(newData, false))) {
-                                    this.props.toggleError();
-                                } else if (oldData) {
-                                    this.props.editPlace(oldData, newData);
-                                }
-                                resolve();
-                            }, 600);
+                            if(!coordinatesAreValid(convertCoordinates(newData, false))) {
+                                this.props.toggleError();
+                            } else if (oldData) {
+                                this.props.editPlace(oldData, newData);
+                            }
+                            resolve();
                         }),
                     onRowDelete: (oldData) =>
                         new Promise((resolve) => {
-                            setTimeout(() => {
-                                this.props.deletePlace(oldData);
-                                resolve();
-                            }, 600);
-                        }),
+                            this.props.deletePlace(oldData);
+                            resolve();
+                        })
                 }}
             />
         );

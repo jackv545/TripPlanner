@@ -9,7 +9,8 @@ import MapControls, { toggleMapOptions } from './MapControls';
 import Optimization, { changeOptimization } from './Optimization';
 import { createTripRequest, setTripState, sendServerRequest } from '../../api/restfulAPI';
 import LatLngError, { toggleError } from './LatLngError';
-import Footer from './Footer'
+import Footer from './Footer';
+import Loading from './Loading';
 
 export default class TripPlanner extends Component {
     constructor(props) {
@@ -35,7 +36,8 @@ export default class TripPlanner extends Component {
             latlngError: false,
             mapOptions: {
                 showRoute: true, showMarkers: false
-            }
+            },
+            loadingTrip: false
         };
     }
 
@@ -84,6 +86,9 @@ export default class TripPlanner extends Component {
                             toggleError={this.toggleError} 
                             latlngError={this.state.latlngError}
                         />
+                    </Grid>
+                    <Grid item xs={12}>
+                        {this.state.loadingTrip && <Loading/>}
                     </Grid>
                     <Grid item xs={12}>
                         <Itinerary 
