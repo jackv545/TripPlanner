@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { Grid, AppBar, Toolbar, Tooltip, IconButton } from '@material-ui/core';
-import { Home } from '@material-ui/icons';
+import { Grid, AppBar, Toolbar, IconButton, Hidden, Collapse, Box } from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
 import LeafletMap from './LeafletMap';
 import Itinerary, { addPlace, deletePlace, editPlace } from './Itinerary';
 import LoadData, { setPlaces } from './LoadData';
@@ -11,8 +10,19 @@ import { createTripRequest, setTripState, sendServerRequest } from '../../api/re
 import LatLngError, { toggleError } from './LatLngError';
 import Footer from './Footer';
 import Loading from './Loading';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class TripPlanner extends Component {
+const useStyles = () => ({
+    root: {
+
+    },
+    mobile: {
+        paddingLeft: 5,
+        paddingBottom: 10
+    }
+});
+
+export class TripPlanner extends Component {
     constructor(props) {
         super(props);
 
@@ -29,6 +39,8 @@ export default class TripPlanner extends Component {
         this.setTripState = setTripState.bind(this);
         this.sendServerRequest = sendServerRequest.bind(this);
 
+        this.toggleCollapse = this.toggleCollapse.bind(this);
+
         this.state = {
             places: [], savePlaces: [],
             distances: [],
@@ -37,7 +49,8 @@ export default class TripPlanner extends Component {
             mapOptions: {
                 showRoute: true, showMarkers: false
             },
-            loadingTrip: false
+            loadingTrip: false,
+            collapseOpen: false
         };
     }
 
@@ -45,34 +58,65 @@ export default class TripPlanner extends Component {
         document.title = 'Trip Planner'
     }
 
+    toggleCollapse() {
+        this.setState(prevState => ({
+            collapseOpen: !prevState.collapseOpen
+        }));
+    }
+
+    menu(mobileDisplay = false) {
+        const { classes } = this.props;
+
+        return(
+            <Box className={mobileDisplay ? classes.mobile : classes.root}>
+                <LoadData setPlaces={this.setPlaces}/>
+                <MapControls 
+                    mapOptions={this.state.mapOptions}
+                    toggleMapOptions={this.toggleMapOptions}
+                />
+                <Optimization 
+                    optimization={this.state.optimization}
+                    changeOptimization={this.changeOptimization}
+                />
+            </Box>
+        );
+    }
+
+    appBar() {
+        return(
+            <>
+            <AppBar position="static" color="inherit">
+                <Toolbar>
+                    <Grid container justify="space-between" alignItems="baseline">
+                        <Hidden xsDown>
+                            <Grid item>
+                                {this.menu()}
+                            </Grid>
+                        </Hidden>
+                        <Hidden smUp>
+                            <Grid item>
+                                <IconButton onClick={this.toggleCollapse}><Menu/></IconButton>
+                            </Grid>
+                        </Hidden>
+                        <Grid item>
+                            {this.props.darkModeButton()}
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+                <Hidden smUp>
+                    <Collapse in={this.state.collapseOpen}>
+                        {this.menu(true)}
+                    </Collapse>
+                </Hidden>
+            </AppBar>
+            </>
+        );
+    }
+
     render() {
         return (
             <>
-                <AppBar position="static" color="inherit">
-                    <Toolbar>
-                        <Grid container justify="space-between" alignItems="baseline">
-                            <Grid item>
-                                <Tooltip title="Home" aria-label="home">
-                                    <Link to="/">
-                                        <IconButton><Home/></IconButton>
-                                    </Link>
-                                </Tooltip>
-                                <LoadData setPlaces={this.setPlaces}/>
-                                <MapControls 
-                                    mapOptions={this.state.mapOptions}
-                                    toggleMapOptions={this.toggleMapOptions}
-                                />
-                                <Optimization 
-                                    optimization={this.state.optimization}
-                                    changeOptimization={this.changeOptimization}
-                                />
-                            </Grid>
-                            <Grid item>
-                                {this.props.darkModeButton()}
-                            </Grid>
-                        </Grid>
-                    </Toolbar>
-                </AppBar>
+                {this.appBar()}
                 <Grid container>
                     <Grid item xs={12}>
                         <LeafletMap 
@@ -108,3 +152,5 @@ export default class TripPlanner extends Component {
         );
     }
 }
+
+export default withStyles(useStyles)(TripPlanner);

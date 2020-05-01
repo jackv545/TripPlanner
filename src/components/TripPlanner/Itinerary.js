@@ -77,8 +77,10 @@ function createTableData(places, distances) {
 
     for (let i = 0; i < places.length; i++) {
         cumulativeDistance += distances[i];
-        places[i].distance = 
-            `${commasInNumber(distances[i])} (${commasInNumber(cumulativeDistance)})`;
+        if(!isNaN(distances[i])) {
+            places[i].distance = 
+                `${commasInNumber(distances[i])} (${commasInNumber(cumulativeDistance)})`;
+        }
         
         places[i].latitude = parseFloat(places[i].latitude).toFixed(2);
         places[i].longitude = parseFloat(places[i].longitude).toFixed(2);
@@ -87,10 +89,6 @@ function createTableData(places, distances) {
 }
 
 function commasInNumber(num) {
-    console.log('Number', num, 'Type', typeof(num));
-    if (num === undefined || isNaN(num)){
-        return "";
-    }
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 

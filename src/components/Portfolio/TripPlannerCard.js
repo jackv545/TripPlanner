@@ -23,7 +23,7 @@ export default function TripPlannerCard() {
 
     return(
         <Grid container>
-            <Grid item>
+            <Grid item xs={12} sm={12} md={6}>
                 <Card className={classes.root}>
                     <CardMedia
                         className={classes.media}
@@ -34,7 +34,7 @@ export default function TripPlannerCard() {
                             Trip Planner
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            Web application for mapping latitude and longitude coordinates
+                            Web application for mapping latitude and longitude coordinates and finding the shortest route.
                         </Typography>
                     </CardContent>
                     <CardActions>
