@@ -24,7 +24,6 @@ export function setPlaces(dataSet) {
     }
 
     this.setState({
-        optimization: 'none',
         places: file,
         savePlaces: file
     }, () => {

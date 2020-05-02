@@ -34,17 +34,27 @@ function createTripRoute(places, showRoute, prefersDarkMode) {
             tripLines.push([places[0].latitude, places[0].longitude]);
         }
     }
-    return (<Polyline color={prefersDarkMode ? "white" : "blue"} positions={tripLines}/>);
+    return (<Polyline color={prefersDarkMode ? '#e0e0e0' : '#3f51b5'} positions={tripLines}/>);
 }
 
-function createTripMarkers(places, showMarkers) {
+function createIcon(prefersDarkMode) {
+    return (
+        new L.Icon({
+            iconUrl: require(`../../images/map-marker-${prefersDarkMode ? 'yellow' : 'red'}.png`),
+            iconAnchor: [18, 34],
+            popupAnchor: [0, -32],
+            shadowUrl: null
+        })
+    );
+}
+function createTripMarkers(places, showMarkers, prefersDarkMode) {
     let lines = createLines(places, places.length);
     let tripMarkers = [];
 
     for (let i = 0; i < lines.length; i++) {
         if(showMarkers) {
             let marker = (
-                <Marker position={lines[i]}>
+                <Marker icon={createIcon(prefersDarkMode)} position={lines[i]}>
                     <Popup>
                         {places[i].name}
                     </Popup>
@@ -137,7 +147,8 @@ export default class LeafletMap extends Component {
                 {tileLayer(this.props.prefersDarkMode)}
                 {createTripRoute(
                     this.props.places, this.props.mapOptions.showRoute, this.props.prefersDarkMode)}
-                {createTripMarkers(this.props.places, this.props.mapOptions.showMarkers)}
+                {createTripMarkers(
+                    this.props.places, this.props.mapOptions.showMarkers, this.props.prefersDarkMode)}
             </Map>
         );
     }
