@@ -2,6 +2,8 @@
 
 [Live Demo](https://www.jackvisser.com/TripPlanner) 
 
+Web application for mapping longitude / latitude coordinates and finding the shortest route.
+
 ## Built With
 * [ReactJS](https://reactjs.org/)
 * [Material-UI](https://material-ui.com/)
