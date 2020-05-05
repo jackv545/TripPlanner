@@ -27,6 +27,10 @@ export default class MapControls extends Component {
     };
 
     render() {
+        let options = this.props.mapOptions.showMarkers 
+            ? ['showRoute', 'showMarkers', 'showClusters']
+            : ['showRoute', 'showMarkers'];
+
         return(
             <>
             <Tooltip title="Edit map options" aria-label="edit map options">
@@ -44,14 +48,14 @@ export default class MapControls extends Component {
                 open={Boolean(this.state.anchorEl)}
                 onClose={this.handleClose}
             >
-                {['showRoute', 'showMarkers'].map((stateVar, i) => (
+                {options.map((stateVar, i) => (
                     <FormControlLabel key={i}
                         control={
                             <Checkbox
                                 color='default'
                                 checked={this.props.mapOptions[stateVar]}
                                 onChange={() => this.props.toggleMapOptions(stateVar)}
-                                inputProps={{ 'aria-label': 'primary checkbox' }}
+                                inputProps={{ 'aria-label': stateVar }}
                             />
                         }
                         style={{ display: 'block', 'marginLeft': 2 }}

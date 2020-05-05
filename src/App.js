@@ -18,7 +18,7 @@ export default class App extends Component {
     this.darkModeButton = this.darkModeButton.bind(this);
 
     this.state = {
-      prefersDarkMode: true
+      prefersDarkMode: window.matchMedia("(prefers-color-scheme: dark)").matches
     };
   }
 

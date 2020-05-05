@@ -47,7 +47,7 @@ export class TripPlanner extends Component {
             optimization: 'none',
             latlngError: false,
             mapOptions: {
-                showRoute: true, showMarkers: false
+                showRoute: true, showMarkers: true, showClusters: true
             },
             loadingTrip: false,
             collapseOpen: false

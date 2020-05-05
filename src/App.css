@@ -1,3 +1,24 @@
 body {
   background-color: #a0a0a0
 }
+
+.marker-cluster {
+  border-radius: 50%;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
+
+.light {
+  background: white;
+  border: 2px solid #f50057;
+  color: black;
+  
+}
+/* #ffd54f */
+.dark {
+  background: #424242;
+  border: 2px solid #ffd54f;
+  color: white;
+}

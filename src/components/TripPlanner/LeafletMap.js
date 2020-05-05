@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import 'leaflet/dist/leaflet.css';
+import 'react-leaflet-markercluster/dist/styles.min.css';
 import { Map, Marker, Polyline, Popup, TileLayer } from "react-leaflet";
 import L from 'leaflet';
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -47,24 +49,29 @@ function createIcon(prefersDarkMode) {
         })
     );
 }
+
 function createTripMarkers(places, showMarkers, prefersDarkMode) {
     let lines = createLines(places, places.length);
-    let tripMarkers = [];
+    
+    return lines.map((coordinate, i) => (
+        showMarkers && 
+        <Marker key={i} icon={createIcon(prefersDarkMode)} position={coordinate}>
+            <Popup>
+                {places[i].name}
+            </Popup>
+        </Marker>
+    ));
+}
 
-    for (let i = 0; i < lines.length; i++) {
-        if(showMarkers) {
-            let marker = (
-                <Marker icon={createIcon(prefersDarkMode)} position={lines[i]}>
-                    <Popup>
-                        {places[i].name}
-                    </Popup>
-                </Marker>
-            );
-            tripMarkers.push(marker);
-        }
-    }
-
-    return tripMarkers;
+function createMarkerCluster(places, showMarkers, prefersDarkMode, createClusterFunction) {
+    return(
+        <MarkerClusterGroup 
+            iconCreateFunction={createClusterFunction}
+            polygonOptions={{weight: 4, color:  '#7986cb', fill: true, fillOpacity: 0.5}}
+        >
+            {createTripMarkers(places, showMarkers, prefersDarkMode)}
+        </MarkerClusterGroup>
+    );
 }
 
 /* Given the places statevar and a cardinal direction in all lowercase,
@@ -119,7 +126,7 @@ function mapBoundaries(places) {
     }
 }
 
-function  tileLayer(prefersDarkMode) {
+function tileLayer(prefersDarkMode) {
     let apiKey = 'ef139e34362944cea36485ebc2293d9b';
     if(prefersDarkMode) {
         return(
@@ -137,6 +144,14 @@ function  tileLayer(prefersDarkMode) {
 }
 
 export default class LeafletMap extends Component {
+    createCluster = cluster => {
+        return L.divIcon({
+            html: `<span>${cluster.getChildCount()}</span>`,
+            className: `marker-cluster ${this.props.prefersDarkMode ? 'dark' : 'light'}`,
+            iconSize: L.point(40, 40, true),
+        });
+    }
+
     render() {
         return(
             <Map
@@ -147,8 +162,13 @@ export default class LeafletMap extends Component {
                 {tileLayer(this.props.prefersDarkMode)}
                 {createTripRoute(
                     this.props.places, this.props.mapOptions.showRoute, this.props.prefersDarkMode)}
-                {createTripMarkers(
-                    this.props.places, this.props.mapOptions.showMarkers, this.props.prefersDarkMode)}
+                {this.props.mapOptions.showClusters 
+                    ? createMarkerCluster(
+                        this.props.places, this.props.mapOptions.showMarkers, 
+                        this.props.prefersDarkMode, this.createCluster)
+                    : createTripMarkers(this.props.places, this.props.mapOptions.showMarkers, 
+                        this.props.prefersDarkMode)
+                }
             </Map>
         );
     }
