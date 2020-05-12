@@ -9,9 +9,7 @@ Web application for mapping longitude / latitude coordinates and finding the sho
 * [Material-UI](https://material-ui.com/)
 * [React-Leaflet](https://react-leaflet.js.org/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Build
+## Build Script
 
 In the project directory, you can run:
 
