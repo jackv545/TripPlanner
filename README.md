@@ -2,7 +2,7 @@
 
 [Live Demo](https://www.jackvisser.com/TripPlanner) 
 
-Web application for mapping longitude / latitude coordinates and finding the shortest route.
+Web application for mapping latitude / longitude coordinates and finding the shortest route. Uses a Spark Java back-end (private repository) to provide distance calculation and traveling salesperson optimization. 
 
 ## Built With
 * [ReactJS](https://reactjs.org/)
