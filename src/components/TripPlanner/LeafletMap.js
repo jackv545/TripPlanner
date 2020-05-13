@@ -5,6 +5,8 @@ import { Map, Marker, Polyline, Popup, TileLayer } from "react-leaflet";
 import L from 'leaflet';
 import MarkerClusterGroup from "react-leaflet-markercluster";
 
+import './LeafletCluster.css';
+
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({

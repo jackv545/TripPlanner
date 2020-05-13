@@ -1,18 +1,81 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation';
 import TripPlannerCard from './TripPlannerCard';
 
-export default class Portfolio extends Component {
+import { Grid, Paper, Typography, Icon, IconButton, Tooltip, Link, Divider } 
+    from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import { Place, LinkedIn, GitHub } from '@material-ui/icons';
+
+const useStyles = () => ({
+    root: {
+        marginTop: 16,
+        padding: 16
+    },
+    edu: {
+        marginTop: 8
+    },
+    place: {
+        marginTop: 16,
+        marginBottom: 8
+    },
+    techStack: {
+        marginTop: 10,
+        marginBottom: 10
+    }
+});
+
+class Portfolio extends Component {
     componentDidMount() {
         document.title = 'Jack Visser | Porfolio'
     }
 
+    personalCard() {
+        const { classes } = this.props;
+
+        return(
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+                <Paper className={classes.root}>
+                    <Typography align="center" variant="h5" component="h1">
+                        Jack Visser
+                    </Typography>
+                    <Grid container className={classes.place} 
+                        direction="row" justify="center" alignItems="center"
+                    >
+                        <Grid item>
+                            <Icon><Place/></Icon>
+                        </Grid>
+                        <Grid item>
+                            <Typography>Fort Collins, CO</Typography>
+                        </Grid>
+                    </Grid>
+                    <Divider/>
+                    <Grid container direction="row" justify="center" alignItems="center">
+                        <Grid item>
+                            <Tooltip title="LinkedIn Profile" aria-label="linkedin">
+                                <Link href='https://www.linkedin.com/in/jack-visser/' target="_blank" rel="noopener">
+                                        <IconButton><LinkedIn/></IconButton>
+                                </Link>
+                            </Tooltip>
+                            <Tooltip title="GitHub Profile" aria-label="github">
+                                <Link href='https://github.com/jackv545' target="_blank" rel="noopener">
+                                        <IconButton><GitHub/></IconButton>
+                                </Link>
+                            </Tooltip>
+                        </Grid>
+                    </Grid>
+                </Paper>
+            </Grid>
+        );
+    }
+
     render() {
         return(
-            <>
-            <Navigation prefersDarkMode={this.props.prefersDarkMode}/>
-            <TripPlannerCard/>
-            </>
+            <Grid container spacing={2}>
+                {this.personalCard()}
+                <TripPlannerCard prefersDarkMode={this.props.prefersDarkMode}/>
+            </Grid>
         );
     }
 }
+
+export default withStyles(useStyles)(Portfolio);

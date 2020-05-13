@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-import './App.css';
-
-import { Container, Tooltip, IconButton } from '@material-ui/core';
+import { Container, Tooltip, IconButton, CssBaseline, Box } from '@material-ui/core';
 import { Brightness4, BrightnessHigh } from '@material-ui/icons';
+import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
+
 import TripPlanner from './components/TripPlanner/TripPlanner';
 import Portfolio from './components/Portfolio/Portfolio';
 
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import background from './images/background.jpg';
 
-export default class App extends Component {
+const useStyles = () => ({
+  bg: {
+    backgroundImage: `url(${background})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 96px'
+  }
+});
+
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -26,6 +34,9 @@ export default class App extends Component {
     return createMuiTheme({
       palette: {
           type: this.state.prefersDarkMode ? 'dark' : 'light',
+          background: {
+            default: this.state.prefersDarkMode ? '#757575' : '#eeeeee'
+          }
       }
     });
   }
@@ -47,8 +58,11 @@ export default class App extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return(
       <ThemeProvider theme={this.createTheme()}>
+        <CssBaseline/>
         <Router>
           <Switch>
             <Route path="/TripPlanner">
@@ -60,9 +74,13 @@ export default class App extends Component {
               </Container>
             </Route>
             <Route path="/">
-              <Container maxWidth="md">
-                <Portfolio prefersDarkMode={this.state.prefersDarkMode}/>
-              </Container>
+              <Box className={classes.bg}>
+                <Container maxWidth="lg">
+                  <Portfolio 
+                    prefersDarkMode={this.state.prefersDarkMode}
+                  />
+                </Container>
+              </Box>
             </Route>
           </Switch>
         </Router>
@@ -70,3 +88,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withStyles(useStyles)(App);
