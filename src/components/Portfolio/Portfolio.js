@@ -66,9 +66,9 @@ class Portfolio extends Component {
                                         <GitHub/>
                                 </Link>
                             </Tooltip>
-                            <Link component={RouterLink} to="/contact">
+                            <Link component={RouterLink} to="/contact" color="inherit">
                                 <Tooltip title="Contact" aria-label="contact">
-                                    <IconButton color="default">
+                                    <IconButton>
                                         <ContactMail/>
                                     </IconButton>
                                 </Tooltip>
