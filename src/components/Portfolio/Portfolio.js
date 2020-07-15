@@ -53,7 +53,7 @@ class Portfolio extends Component {
                             <Tooltip title="LinkedIn Profile" aria-label="linkedin">
                                 <Link 
                                     href='https://www.linkedin.com/in/jack-visser/' target="_blank" 
-                                    rel="noopener" component={IconButton}
+                                    rel="noopener" component={IconButton} color="inherit"
                                 >
                                     <LinkedIn/>
                                 </Link>
@@ -61,14 +61,14 @@ class Portfolio extends Component {
                             <Tooltip title="GitHub Profile" aria-label="github">
                                 <Link 
                                     href='https://github.com/jackv545' target="_blank" 
-                                    rel="noopener" component={IconButton}
+                                    rel="noopener" component={IconButton} color="inherit"
                                 >
                                         <GitHub/>
                                 </Link>
                             </Tooltip>
                             <Link component={RouterLink} to="/contact">
                                 <Tooltip title="Contact" aria-label="contact">
-                                    <IconButton>
+                                    <IconButton color="default">
                                         <ContactMail/>
                                     </IconButton>
                                 </Tooltip>
