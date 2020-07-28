@@ -78,14 +78,16 @@ export default function ProjectCard(props) {
                         <Tooltip title="Go to application" aria-label="go to application">
                             {project.demoButton}
                         </Tooltip>
-                        <Tooltip title="View source code" aria-label="view source code">
-                            <IconButton
-                                color="inherit" href={project.repoLink} 
-                                component={Link} target="_blank" rel="noopener"
-                            >
-                                <Code/>
-                            </IconButton>
-                        </Tooltip>
+                        <Link 
+                            color="inherit" href={project.repoLink}
+                            target="_blank" rel="noopener"
+                        >
+                            <Tooltip title="View source code" aria-label="view source code">
+                                <IconButton color="inherit">
+                                    <Code/>
+                                </IconButton>
+                            </Tooltip>
+                        </Link>
                     </CardActions>
                 </Card>
             </Grid>
