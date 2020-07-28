@@ -8,7 +8,7 @@ import LinkButton from '../LinkButton';
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        marginTop: theme.spacing(3)
+        paddingTop: theme.spacing(3)
     },
     paper: {
         padding: theme.spacing(2)

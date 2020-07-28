@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import TripPlannerCard from './TripPlannerCard';
+import ProjectCard from './ProjectCard';
 
 import { Grid, Paper, Typography, Icon, IconButton, Tooltip, Link, Divider } 
     from '@material-ui/core';
@@ -13,7 +13,7 @@ const useStyles = () => ({
         marginTop: 16,
         padding: 16
     },
-    edu: {
+    mt1: {
         marginTop: 8
     },
     place: {
@@ -31,7 +31,7 @@ class Portfolio extends Component {
         const { classes } = this.props;
 
         return(
-            <Grid item xs={12} sm={12} md={4} lg={4}>
+            <Grid item xs={12} sm={12} md={4}>
                 <Paper className={classes.root}>
                     <Typography align="center" variant="h5" component="h1">
                         Jack Visser
@@ -63,7 +63,7 @@ class Portfolio extends Component {
                                     href='https://github.com/jackv545' target="_blank" 
                                     rel="noopener" component={IconButton} color="inherit"
                                 >
-                                        <GitHub/>
+                                    <GitHub/>
                                 </Link>
                             </Tooltip>
                             <Link component={RouterLink} to="/contact" color="inherit">
@@ -81,10 +81,27 @@ class Portfolio extends Component {
     }
 
     render() {
+        const { classes } = this.props;
+
         return(
             <Grid container spacing={2}>
                 {this.personalCard()}
-                <TripPlannerCard prefersDarkMode={this.props.prefersDarkMode}/>
+                <Grid item xs={12}>
+                    <Typography 
+                         className={classes.mt1} variant="h5" component="h1"
+                        color= {this.props.prefersDarkMode ? "textPrimary" : "inherit"}
+                    >
+                        Projects
+                    </Typography>
+                </Grid>
+                <ProjectCard
+                    project="snotel" 
+                    prefersDarkMode={this.props.prefersDarkMode}
+                />
+                <ProjectCard
+                    project="tripPlanner" 
+                    prefersDarkMode={this.props.prefersDarkMode}
+                />
             </Grid>
         );
     }

@@ -79,7 +79,9 @@ class App extends Component {
                             </Container>
                         </Route>
                         <Route exact path="/contact">
-                            <Contact prefersDarkMode={this.state.prefersDarkMode}/>
+                            <Box className={classes.bg}>
+                                <Contact prefersDarkMode={this.state.prefersDarkMode}/>
+                            </Box>
                         </Route>
                         <Route exact path="/">
                             <Box className={classes.bg}>

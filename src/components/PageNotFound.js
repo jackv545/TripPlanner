@@ -20,7 +20,7 @@ export default function PageNotFound(props) {
     const classes = useStyles();
 
     return(
-        <Box >
+        <Box>
             <Grid 
                 container justify="center" className={classes.message}
                 alignItems="center" spacing={3}
