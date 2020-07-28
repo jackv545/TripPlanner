@@ -19,8 +19,6 @@ const useStyles = makeStyles({
 });
 
 export default function ProjectCard(props) {
-    const classes = useStyles();
-
     const projects = {
         snotel: {
             img: SnotelImg,
@@ -57,6 +55,8 @@ export default function ProjectCard(props) {
         }
     };
 
+    const classes = useStyles();
+
     const projectCard = (project) => {
         return (
             <Grid item xs={12} sm={12} md={6}>
@@ -80,7 +80,7 @@ export default function ProjectCard(props) {
                         </Tooltip>
                         <Tooltip title="View source code" aria-label="view source code">
                             <IconButton
-                                href={project.repoLink} 
+                                color="inherit" href={project.repoLink} 
                                 component={Link} target="_blank" rel="noopener"
                             >
                                 <Code/>
