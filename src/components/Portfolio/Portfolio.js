@@ -66,13 +66,11 @@ class Portfolio extends Component {
                                     <GitHub/>
                                 </Link>
                             </Tooltip>
-                            <Link component={RouterLink} to="/contact" color="inherit">
-                                <Tooltip title="Contact" aria-label="contact">
-                                    <IconButton color="inherit">
-                                        <ContactMail/>
-                                    </IconButton>
-                                </Tooltip>
-                            </Link>
+                            <Tooltip title="Contact" aria-label="contact">
+                                <RouterLink to="/contact" component={IconButton}>
+                                    <ContactMail/>
+                                </RouterLink>
+                            </Tooltip>
                         </Grid>
                     </Grid>
                 </Paper>
