@@ -67,7 +67,7 @@ class Portfolio extends Component {
                                 </Link>
                             </Tooltip>
                             <Tooltip title="Contact" aria-label="contact">
-                                <RouterLink to="/contact" component={IconButton}>
+                                <RouterLink to="/contact" color="inherit" component={IconButton}>
                                     <ContactMail/>
                                 </RouterLink>
                             </Tooltip>
