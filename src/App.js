@@ -28,7 +28,8 @@ export default class App extends Component {
             palette: {
                 type: this.state.prefersDarkMode ? 'dark' : 'light',
                 background: {
-                    default: this.state.prefersDarkMode ? '#757575' : '#eeeeee'
+                    paper: this.state.prefersDarkMode ? '#212121' : '#fff',
+                    default: this.state.prefersDarkMode ? '#121212' : '#eeeeee'
                 },
                 primary: {
                     main: this.state.prefersDarkMode ? '#7986cb' : '#3f51b5'
