@@ -29,8 +29,8 @@ export default function ProjectCard(props) {
                 snowpack information.`,
             demoButton: (
                 <Button 
-                    variant='outlined' component={Link} 
-                    href="https://www.snotel.jackvisser.com"
+                    variant='outlined' underline="none"
+                    component={Link} href="https://www.snotel.jackvisser.com" 
                 > 
                     Demo 
                 </Button>
