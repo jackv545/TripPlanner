@@ -1,7 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/dcb0fe53-00bb-4681-b4dc-a709d8c51daf/deploy-status)](https://app.netlify.com/sites/jack-visser-porfolio/deploys)
 
-[Live Demo](https://www.jackvisser.com/TripPlanner) 
-
 Web application for mapping latitude / longitude coordinates and finding the shortest route. Uses a Spark Java back-end (private repository) to provide distance calculation and traveling salesperson optimization. 
 
 ## Built With
