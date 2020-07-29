@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Container, Tooltip, IconButton, CssBaseline, Box } from '@material-ui/core';
+import { Container, Tooltip, IconButton, CssBaseline } from '@material-ui/core';
 import { Brightness4, BrightnessHigh } from '@material-ui/icons';
-import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import TripPlanner from './components/TripPlanner/TripPlanner';
 import Portfolio from './components/Portfolio/Portfolio';
+import NavBar from './components/Portfolio/NavBar';
 import Contact from './components/Portfolio/Contact';
 import PageNotFound from './components/PageNotFound';
 
-import background from './images/background.jpg';
-
-const useStyles = () => ({
-    bg: {
-        backgroundImage: `url(${background})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 96px'
-    }
-});
-
-class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
 
@@ -63,14 +54,12 @@ class App extends Component {
     }
 
     render() {
-        const { classes } = this.props;
-
         return (
             <ThemeProvider theme={this.createTheme()}>
-                <CssBaseline />
+                <CssBaseline/>
                 <Router>
                     <Switch>
-                        <Route exact path="/TripPlanner">
+                        <Route exact path="/trip-planner">
                             <Container maxWidth="md">
                                 <TripPlanner
                                     prefersDarkMode={this.state.prefersDarkMode}
@@ -78,22 +67,23 @@ class App extends Component {
                                 />
                             </Container>
                         </Route>
-                        <Route exact path="/contact">
-                            <Box className={classes.bg}>
-                                <Contact prefersDarkMode={this.state.prefersDarkMode}/>
-                            </Box>
-                        </Route>
-                        <Route exact path="/">
-                            <Box className={classes.bg}>
-                                <Container maxWidth="lg">
-                                    <Portfolio
-                                        prefersDarkMode={this.state.prefersDarkMode}
-                                    />
-                                </Container>
-                            </Box>
-                        </Route>
-                        <Route path="*">
-                            <PageNotFound/>
+                        <Route path="/">
+                            <NavBar prefersDarkMode={this.state.prefersDarkMode}/>
+                            <Switch>
+                                <Route exact path="/">
+                                    <Container maxWidth="lg">
+                                        <Portfolio
+                                            prefersDarkMode={this.state.prefersDarkMode}
+                                        />
+                                    </Container>
+                                </Route>
+                                <Route exact path="/contact">
+                                    <Contact prefersDarkMode={this.state.prefersDarkMode}/>
+                                </Route>
+                                <Route path="*">
+                                    <PageNotFound/>
+                                </Route>
+                            </Switch>
                         </Route>
                     </Switch>
                 </Router>
@@ -101,5 +91,3 @@ class App extends Component {
         );
     }
 }
-
-export default withStyles(useStyles)(App);

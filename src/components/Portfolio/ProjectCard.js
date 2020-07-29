@@ -46,7 +46,7 @@ export default function ProjectCard(props) {
                 traveling salesperson optimization.`,
             demoButton: (
                 <Button 
-                    variant='outlined' component={RouterLink} to="/TripPlanner"
+                    variant='outlined' component={RouterLink} to="/trip-planner"
                 > 
                     Demo 
                 </Button>
