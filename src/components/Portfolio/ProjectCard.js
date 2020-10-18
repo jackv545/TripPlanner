@@ -7,7 +7,7 @@ import { Card, CardActions, CardMedia, CardContent, Typography, IconButton, Tool
 import { Code } from '@material-ui/icons';
 
 import TripPlannerImg from '../../images/TripPlanner.jpg';
-import SnotelImg from '../../images/Snotel.png';
+import SnotelImg from '../../images/Snotel.jpg';
 
 const useStyles = makeStyles({
     media: {
