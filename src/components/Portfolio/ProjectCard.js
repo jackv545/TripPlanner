@@ -65,6 +65,7 @@ export default function ProjectCard(props) {
                         component="img"
                         className={classes.media}
                         image={project.img}
+                        alt={`${project.title} screenshot`}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
