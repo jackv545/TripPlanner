@@ -6,7 +6,7 @@ import Itinerary, { addPlace, deletePlace, editPlace } from './Itinerary';
 import LoadData, { setPlaces } from './LoadData';
 import MapControls, { toggleMapOptions } from './MapControls';
 import Optimization, { changeOptimization } from './Optimization';
-import { createTripRequest, setTripState, sendServerRequest } from '../../api/restfulAPI';
+import { createTripRequest, setTripState, sendServerRequest } from '../api/restfulAPI';
 import LatLngError, { toggleError } from './LatLngError';
 import Footer from './Footer';
 import Loading from './Loading';
@@ -52,10 +52,6 @@ export class TripPlanner extends Component {
             loadingTrip: false,
             collapseOpen: false
         };
-    }
-
-    componentDidMount() {
-        document.title = 'Trip Planner'
     }
 
     toggleCollapse() {

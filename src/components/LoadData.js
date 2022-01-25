@@ -8,9 +8,9 @@ let dataSets = {
 }
 
 export function setPlaces(dataSet) {
-    let coloradoCities = require('../../data/simple.json');
-    let coloradoBrews = require('../../data/coloradoBrews.json');
-    let usAirports = require('../../data/100airports.json');
+    let coloradoCities = require('../data/simple.json');
+    let coloradoBrews = require('../data/coloradoBrews.json');
+    let usAirports = require('../data/100airports.json');
     let file;
 
     switch(dataSet) {

@@ -44,7 +44,7 @@ function createTripRoute(places, showRoute, prefersDarkMode) {
 function createIcon(prefersDarkMode) {
     return (
         new L.Icon({
-            iconUrl: require(`../../images/map-marker-${prefersDarkMode ? 'yellow' : 'red'}.png`),
+            iconUrl: require(`../images/map-marker-${prefersDarkMode ? 'yellow' : 'red'}.png`),
             iconAnchor: [18, 34],
             popupAnchor: [0, -32],
             shadowUrl: null

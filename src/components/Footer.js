@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Paper, Grid, Typography, Link, Button } from '@material-ui/core';
 import { GitHub, Web } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
-import LinkButton from '../LinkButton';
 
 const useStyles = () => ({
     root: {
@@ -44,9 +43,14 @@ export class Footer extends Component {
                                     Repository
                                 </Button>   
                             </Link>
-                            <LinkButton to="/" startIcon={<Web/>} className={classes.linkButton}>
-                                Jack Visser
-                            </LinkButton>
+                            <Link 
+                                color="inherit" href='https://www.jackvisser.com' 
+                                target="_blank" rel="noopener" underline="none"
+                            >
+                                <Button startIcon={<Web/>} className={classes.linkButton}>
+                                    Jack Visser
+                                </Button>   
+                            </Link>
                         </Grid>
                     </Grid>
                     <Grid item>
