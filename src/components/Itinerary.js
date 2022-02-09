@@ -137,6 +137,11 @@ export default class Itinerary extends Component {
                             resolve();
                         })
                 }}
+                localization={{
+                    body: {
+                        emptyDataSourceMessage: 'Add a location or select an example trip from the "Data" menu.'
+                    }
+                }}
             />
         );
     }

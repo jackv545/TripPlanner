@@ -1,0 +1,6 @@
+[context.deploy-preview]
+  command = "npm run buildPreview"
+
+[context.branch-deploy]
+  command = "npm run buildPreview"
+  

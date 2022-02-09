@@ -1,5 +1,5 @@
 export function sendServerRequestWithBody(requestType, requestBody) {
-    const restfulAPI = `https://secret-forest-91548.herokuapp.com/api/${requestType}`;
+    const restfulAPI = `${process.env.REACT_APP_TRIP_PLANNER_HOST}/api/${requestType}`;
     const requestOptions = {
         method: 'POST',
         body: JSON.stringify(requestBody)
