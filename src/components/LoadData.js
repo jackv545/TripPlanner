@@ -27,7 +27,7 @@ export function setPlaces(dataSet) {
         places: file,
         savePlaces: file
     }, () => {
-        this.sendServerRequest('trip', this.createTripRequest(), this.setTripState)
+        this.sendServerRequest('trips', this.createTripRequest(), this.setTripState)
     });
 }
 

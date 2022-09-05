@@ -44,7 +44,7 @@ export function addPlace(place) {
         savePlaces: [...this.state.savePlaces, place],
         optimization: 'none'
     }, () => {
-        this.sendServerRequest('trip', this.createTripRequest(), this.setTripState);
+        this.sendServerRequest('trips', this.createTripRequest(), this.setTripState);
     });
 }
 
@@ -56,7 +56,7 @@ export function deletePlace(place) {
         places: oldPlaces,
         savePlaces: oldPlaces
     }, () => {
-        this.sendServerRequest('trip', this.createTripRequest(), this.setTripState);
+        this.sendServerRequest('trips', this.createTripRequest(), this.setTripState);
     });
 }
 
@@ -68,7 +68,7 @@ export function editPlace(oldPlace, newPlace) {
         places: oldPlaces,
         savePlaces: oldPlaces
     }, () => {
-        this.sendServerRequest('trip', this.createTripRequest(), this.setTripState);
+        this.sendServerRequest('trips', this.createTripRequest(), this.setTripState);
     });
 }
 

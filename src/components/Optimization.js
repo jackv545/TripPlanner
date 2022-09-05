@@ -11,7 +11,7 @@ export function changeOptimization(level) {
         optimization: level
     }, () => {
         if(Object.keys(this.state.places).length > 0) {
-            this.sendServerRequest('trip', this.createTripRequest(), this.setTripState);
+            this.sendServerRequest('trips', this.createTripRequest(), this.setTripState);
         }
     });
 }
