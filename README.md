@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/dcb0fe53-00bb-4681-b4dc-a709d8c51daf/deploy-status)](https://app.netlify.com/sites/jack-visser-porfolio/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dcb0fe53-00bb-4681-b4dc-a709d8c51daf/deploy-status)](https://app.netlify.com/sites/trip-planner-ui/deploys)
 
 Web application for mapping latitude / longitude coordinates and finding the shortest route. Uses a Spring Boot back-end (private repository) to provide distance calculation and traveling salesperson optimization. 
 
